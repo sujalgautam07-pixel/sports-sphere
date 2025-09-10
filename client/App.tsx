@@ -39,6 +39,7 @@ const App = () => (
               path="/nutrition"
               element={<Placeholder title="Nutrition Plans" />}
             />
+            <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
