@@ -41,7 +41,7 @@ const features = [
     desc: "Goal-based meal plans and hydration insights.",
     progress: 73,
     img:
-      "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1600&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F1d8425549bc746499a891ca88a440b03",
     accent: "from-brand-purple to-brand-orange",
   },
 ];
