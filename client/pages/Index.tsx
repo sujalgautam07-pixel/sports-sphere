@@ -31,7 +31,7 @@ const features = [
     desc: "National camps, trials, and competition timelines.",
     progress: 48,
     img:
-      "https://images.unsplash.com/photo-1502810190503-8303352d0dd1?q=80&w=1600&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Ff23b298a4bc84567a227afdeb9b687de",
     accent: "from-brand-orange to-brand-neon",
   },
   {
