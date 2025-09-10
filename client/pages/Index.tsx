@@ -11,7 +11,9 @@ const features = [
     desc: "Live metrics, PB tracking, and performance analytics.",
     progress: 82,
     img:
-      "https://images.unsplash.com/photo-1539622106664-1bb066f66a7a?q=80&w=1600&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F661819139bb14d5b9db21751315043ff",
+    heroImg:
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F98e4032a9f854763b9c77fbdc41eb9ff",
     accent: "from-brand-electric to-brand-purple",
   },
   {
@@ -21,7 +23,9 @@ const features = [
     desc: "Personalized plans with periodization & loads.",
     progress: 64,
     img:
-      "https://images.unsplash.com/photo-1547919307-1ecb1070e785?q=80&w=1600&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Fa0936c03fd7f4c72a39e15abf572566b",
+    heroImg:
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Fa10876665e584a54b0179bdadfbf4b19",
     accent: "from-brand-neon to-brand-electric",
   },
   {
@@ -32,6 +36,8 @@ const features = [
     progress: 48,
     img:
       "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Ff23b298a4bc84567a227afdeb9b687de",
+    heroImg:
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Ff23b298a4bc84567a227afdeb9b687de",
     accent: "from-brand-orange to-brand-neon",
   },
   {
@@ -41,6 +47,8 @@ const features = [
     desc: "Goal-based meal plans and hydration insights.",
     progress: 73,
     img:
+      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F1d8425549bc746499a891ca88a440b03",
+    heroImg:
       "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F1d8425549bc746499a891ca88a440b03",
     accent: "from-brand-purple to-brand-orange",
   },
@@ -108,7 +116,7 @@ export default function Index() {
                       className={"absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-20 " + f.accent}
                     />
                     <img
-                      src={f.img}
+                      src={f.heroImg ?? f.img}
                       alt={f.title}
                       className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
