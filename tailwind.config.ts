@@ -57,6 +57,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        brand: {
+          electric: "hsl(var(--brand-electric))",
+          neon: "hsl(var(--brand-neon))",
+          orange: "hsl(var(--brand-orange))",
+          purple: "hsl(var(--brand-purple))",
+          midnight: "hsl(var(--brand-midnight))",
+        },
+      },
+      boxShadow: {
+        glow: "0 0 0 4px hsl(var(--brand-electric)/0.15), 0 10px 40px -10px hsl(var(--brand-electric)/0.5)",
+      },
+      backgroundSize: {
+        "200%": "200% 200%",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +78,32 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "gradient-x": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "gradient-x": "gradient-x 6s ease infinite",
+        float: "float 4s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
     },
   },
