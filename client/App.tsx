@@ -38,8 +38,8 @@ const App = () => (
               path="/nutrition"
               element={<Placeholder title="Nutrition Plans" />}
             />
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
