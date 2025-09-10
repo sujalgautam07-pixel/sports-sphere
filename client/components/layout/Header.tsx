@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Flame, Trophy, Dumbbell, CalendarDays, Apple } from "lucide-react";
+import { Flame, Trophy, Dumbbell, CalendarDays, Apple, Medal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -8,6 +8,7 @@ const navItems = [
   { to: "/training", label: "Training Programs", icon: Dumbbell },
   { to: "/events", label: "Event Schedules", icon: CalendarDays },
   { to: "/nutrition", label: "Nutrition Plans", icon: Apple },
+  { to: "/leaderboard", label: "Leaderboard", icon: Medal },
 ];
 
 export function Header() {
