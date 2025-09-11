@@ -41,7 +41,15 @@ const App = () => (
               path="/nutrition"
               element={<Placeholder title="Nutrition Plans" />}
             />
-            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route
+              path="/leaderboard"
+              element={
+                <RequireAuth>
+                  <Leaderboard />
+                </RequireAuth>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
