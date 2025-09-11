@@ -52,7 +52,7 @@ export function Header() {
                 asChild
                 className="hidden md:inline-flex bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow hover:brightness-110"
               >
-                <Link to="#get-started">Get Started</Link>
+                <Link to="/signup">Get Started</Link>
               </Button>
             </div>
           </div>
