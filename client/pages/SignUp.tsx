@@ -23,7 +23,6 @@ export default function SignUp() {
   const [serverOtp, setServerOtp] = useState<string>("");
 
   const form = useForm<any>({
-    resolver: zodResolver(mode === "email" ? emailSchema : phoneSchema),
     defaultValues: { email: "", phone: "" },
   });
 
@@ -37,7 +36,23 @@ export default function SignUp() {
   };
 
   const onSubmit = form.handleSubmit((values) => {
-    sendOtp(values.email || values.phone);
+    // validate depending on mode
+    if (mode === "email") {
+      const res = emailSchema.safeParse({ email: values.email });
+      if (!res.success) {
+        form.setError("email", { message: res.error.errors[0].message });
+        return;
+      }
+      sendOtp(values.email);
+      return;
+    }
+
+    const res = phoneSchema.safeParse({ phone: values.phone });
+    if (!res.success) {
+      form.setError("phone", { message: res.error.errors[0].message });
+      return;
+    }
+    sendOtp(values.phone);
   });
 
   const verify = () => {
