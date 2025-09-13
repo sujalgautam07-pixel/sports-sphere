@@ -14,6 +14,7 @@ import Leaderboard from "@/pages/Leaderboard";
 import RequireAuth from "@/components/auth/RequireAuth";
 import SignUp from "@/pages/SignUp";
 import Gate from "@/components/auth/Gate";
+import Athletes from "@/pages/Athletes";
 
 const queryClient = new QueryClient();
 
