@@ -26,7 +26,7 @@ export default function SignUp() {
     defaultValues: { email: "", phone: "" },
   });
 
-  const targetPath = (location?.state?.from?.pathname as string) || "/leaderboard";
+  const targetPath = (location?.state?.from?.pathname as string) || "/home";
 
   const sendOtp = (value: string) => {
     const generated = Math.floor(100000 + Math.random() * 900000).toString();
