@@ -77,7 +77,7 @@ export const handleAnalyze: RequestHandler = async (req, res) => {
     comparison: {
       delta,
       pctOfLead: Number.isFinite(pctOfLead) ? Number(pctOfLead.toFixed(2)) : 0,
-      betterIs: sport === "sprint400" ? "lower" : "higher",
+      betterIs: lead.better,
     },
     media: {
       received: Boolean((req.files as any)?.video?.[0] || (req.files as any)?.frame?.[0]),
