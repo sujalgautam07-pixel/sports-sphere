@@ -71,10 +71,10 @@ export const handleAnalyze: RequestHandler = async (req, res) => {
       betterIs: sport === "sprint400" ? "lower" : "higher",
     },
     media: {
-      received: Boolean(req.file),
+      received: Boolean((req.files as any)?.video?.[0] || (req.files as any)?.frame?.[0]),
       sizeBytes,
-      mime: req.file?.mimetype || null,
+      mime: ((req.files as any)?.video?.[0]?.mimetype || (req.files as any)?.frame?.[0]?.mimetype) ?? null,
     },
-    feedback,
+    feedback: (res.locals as any)?.openai?.feedback || feedback,
   });
 };
