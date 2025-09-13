@@ -1,11 +1,10 @@
 import { isVerified } from "@/lib/auth";
-import { Navigate, useLocation } from "react-router-dom";
-import { ReactNode } from "react";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-export default function RequireAuth({ children }: { children: ReactNode }) {
+export default function RequireAuth() {
   const location = useLocation();
   if (!isVerified()) {
     return <Navigate to="/signup" replace state={{ from: location }} />;
   }
-  return <>{children}</>;
+  return <Outlet />;
 }
