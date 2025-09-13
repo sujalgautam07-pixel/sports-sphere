@@ -37,6 +37,9 @@ export default function Athletes() {
   const [last, setLast] = useState<number>(60);
   const [current, setCurrent] = useState<number>(65);
   const [videoUrl, setVideoUrl] = useState<string>("");
+  const [durationSec, setDurationSec] = useState<number>(0);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [analysis, setAnalysis] = useState<any>(null);
 
   const chartData = useMemo(
     () => [
@@ -80,7 +83,10 @@ export default function Athletes() {
             <p className="mb-4 text-sm text-muted-foreground">Capture your attempt or upload a video (analysis is demo-only).</p>
             <VideoRecorder
               className=""
-              onComplete={(_, url) => setVideoUrl(url)}
+              onComplete={(blob, url, dur) => {
+                setVideoUrl(url);
+                setDurationSec(dur || 0);
+              }}
             />
             <div className="mt-3">
               <input
@@ -91,8 +97,38 @@ export default function Athletes() {
               />
             </div>
             {videoUrl && (
-              <div className="mt-3 text-sm text-foreground/80">Video ready. You can enter your measured result below.</div>
+              <div className="mt-3 text-sm text-foreground/80">Video ready. Duration ~{durationSec.toFixed(1)}s. Enter your measured result and run analysis.</div>
             )}
+            <div className="mt-4">
+              <Button
+                type="button"
+                disabled={analyzing}
+                onClick={async () => {
+                  try {
+                    setAnalyzing(true);
+                    setAnalysis(null);
+                    const fd = new FormData();
+                    fd.append("sport", sport);
+                    fd.append("distance", String(current));
+                    fd.append("duration", String(durationSec || 0));
+                    // Attach a small blob if available
+                    if (videoUrl) {
+                      const resp = await fetch(videoUrl);
+                      const blob = await resp.blob();
+                      fd.append("video", blob, "attempt.webm");
+                    }
+                    const res = await fetch("/api/analyze", { method: "POST", body: fd });
+                    const json = await res.json();
+                    setAnalysis(json);
+                  } finally {
+                    setAnalyzing(false);
+                  }
+                }}
+                className="bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow"
+              >
+                {analyzing ? "Analyzing..." : "Analyze Video"}
+              </Button>
+            </div>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
@@ -128,6 +164,18 @@ export default function Athletes() {
             <div className="mt-4 text-sm text-muted-foreground">Tip: {cfg.tip}</div>
           </div>
         </div>
+
+        {analysis && (
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+            <h2 className="text-lg font-semibold">Analysis</h2>
+            <div className="mt-2 text-sm text-foreground/80">{analysis.feedback}</div>
+            <div className="mt-3 grid gap-3 text-sm sm:grid-cols-3">
+              <div className="rounded-xl border border-white/10 bg-background/60 p-3"><div className="text-xs text-muted-foreground">Your {cfg.unit === "s" ? "time" : "mark"}</div><div className="font-semibold">{analysis.inputMetric} {cfg.unit}</div></div>
+              <div className="rounded-xl border border-white/10 bg-background/60 p-3"><div className="text-xs text-muted-foreground">Pct of lead</div><div className="font-semibold">{analysis.comparison?.pctOfLead}%</div></div>
+              <div className="rounded-xl border border-white/10 bg-background/60 p-3"><div className="text-xs text-muted-foreground">Duration</div><div className="font-semibold">{analysis.duration?.toFixed?.(1) ?? analysis.duration}s</div></div>
+            </div>
+          </div>
+        )}
 
         <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
