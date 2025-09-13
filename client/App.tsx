@@ -28,7 +28,7 @@ const App = () => (
             <Route path="/" element={<Gate />} />
             <Route path="/signup" element={<SignUp />} />
 
-            <Route element={<RequireAuth><></></RequireAuth>}>
+            <Route element={<RequireAuth />}>
               <Route path="/home" element={<Index />} />
               <Route
                 path="/athletes"
