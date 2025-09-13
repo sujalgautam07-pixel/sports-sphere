@@ -30,10 +30,7 @@ const App = () => (
 
             <Route element={<RequireAuth />}>
               <Route path="/home" element={<Index />} />
-              <Route
-                path="/athletes"
-                element={<Placeholder title="Athlete Performance" />}
-              />
+              <Route path="/athletes" element={<Athletes />} />
               <Route
                 path="/training"
                 element={<Placeholder title="Training Programs" />}
