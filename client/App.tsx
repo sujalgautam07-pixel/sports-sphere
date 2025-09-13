@@ -13,6 +13,7 @@ import Placeholder from "@/pages/Placeholder";
 import Leaderboard from "@/pages/Leaderboard";
 import RequireAuth from "@/components/auth/RequireAuth";
 import SignUp from "@/pages/SignUp";
+import Gate from "@/components/auth/Gate";
 
 const queryClient = new QueryClient();
 
@@ -24,32 +25,30 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Index />} />
-            <Route
-              path="/athletes"
-              element={<Placeholder title="Athlete Performance" />}
-            />
-            <Route
-              path="/training"
-              element={<Placeholder title="Training Programs" />}
-            />
-            <Route
-              path="/events"
-              element={<Placeholder title="Event Schedules" />}
-            />
-            <Route
-              path="/nutrition"
-              element={<Placeholder title="Nutrition Plans" />}
-            />
+            <Route path="/" element={<Gate />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route
-              path="/leaderboard"
-              element={
-                <RequireAuth>
-                  <Leaderboard />
-                </RequireAuth>
-              }
-            />
+
+            <Route element={<RequireAuth><></></RequireAuth>}>
+              <Route path="/home" element={<Index />} />
+              <Route
+                path="/athletes"
+                element={<Placeholder title="Athlete Performance" />}
+              />
+              <Route
+                path="/training"
+                element={<Placeholder title="Training Programs" />}
+              />
+              <Route
+                path="/events"
+                element={<Placeholder title="Event Schedules" />}
+              />
+              <Route
+                path="/nutrition"
+                element={<Placeholder title="Nutrition Plans" />}
+              />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+            </Route>
+
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
