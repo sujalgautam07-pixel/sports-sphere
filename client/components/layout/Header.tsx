@@ -17,7 +17,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mt-4 rounded-2xl glass shadow-glow">
           <div className="flex h-16 items-center justify-between px-4 sm:px-6">
-            <Link to="/" className="flex items-center gap-2">
+            <Link to="/home" className="flex items-center gap-2">
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-electric via-brand-purple to-brand-neon text-white shadow-lg">
                 <Flame className="h-5 w-5" />
               </span>
