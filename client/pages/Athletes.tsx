@@ -83,9 +83,12 @@ export default function Athletes() {
             <p className="mb-4 text-sm text-muted-foreground">Capture your attempt or upload a video (analysis is demo-only).</p>
             <VideoRecorder
               className=""
-              onComplete={(blob, url, dur) => {
+              onComplete={(blob, url, dur, thumb) => {
                 setVideoUrl(url);
                 setDurationSec(dur || 0);
+                if (thumb) {
+                  // store in memory via object URL for now (optional)
+                }
               }}
             />
             <div className="mt-3">
