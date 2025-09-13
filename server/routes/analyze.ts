@@ -16,6 +16,15 @@ export const handleAnalyze: RequestHandler = async (req, res) => {
   const frameFile = (req.files as any)?.frame?.[0];
   if (frameFile) (req as any).frameBuffer = frameFile.buffer as Buffer;
 
+  // If OpenAI is configured and we have a frame, ask for technique feedback
+  if (process.env.OPENAI_API_KEY && (req as any).frameBuffer) {
+    const openaiResult = await handleAnalyzeWithOpenAI(req, res);
+    if (res.headersSent) return; // error already sent
+    if (openaiResult) {
+      // continue and merge with heuristic comparison below
+    }
+  }
+
   // Lead athletes (simplified; ideally from DB)
   const leads: Record<string, { name: string; metric: number; unit: string }> = {
     javelin: { name: "Neeraj Chopra", metric: 89.94, unit: "m" },
