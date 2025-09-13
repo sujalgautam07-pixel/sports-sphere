@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export type VideoRecorderProps = {
-  onComplete?: (blob: Blob, url: string) => void;
+  onComplete?: (blob: Blob, url: string, durationSec: number) => void;
   className?: string;
 };
 
