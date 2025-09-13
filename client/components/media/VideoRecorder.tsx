@@ -14,6 +14,7 @@ export default function VideoRecorder({ onComplete, className }: VideoRecorderPr
   const [recording, setRecording] = useState(false);
   const [videoURL, setVideoURL] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
     return () => {
@@ -49,9 +50,12 @@ export default function VideoRecorder({ onComplete, className }: VideoRecorderPr
       const blob = new Blob(chunksRef.current, { type: "video/webm" });
       const url = URL.createObjectURL(blob);
       setVideoURL(url);
-      onComplete?.(blob, url);
+      const durationSec = startTimeRef.current ? (Date.now() - startTimeRef.current) / 1000 : 0;
+      onComplete?.(blob, url, durationSec);
+      startTimeRef.current = null;
     };
     mr.start();
+    startTimeRef.current = Date.now();
     setRecording(true);
   };
 
