@@ -14,6 +14,30 @@ const sports = {
     lead: { name: "Neeraj Chopra", current: 89.94, image: "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F98e4032a9f854763b9c77fbdc41eb9ff" },
     tip: "Focus on run-up speed and release angle (~36–38°).",
   },
+  shotput: {
+    name: "Shot Put",
+    unit: "m",
+    lead: { name: "Tajinderpal Singh Toor", current: 21.77, image: "https://images.unsplash.com/photo-1526401485004-2fda9f4dc5f1?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Explode through hips; keep a strong finish on release.",
+  },
+  discus: {
+    name: "Discus Throw",
+    unit: "m",
+    lead: { name: "Kamalpreet Kaur", current: 66.59, image: "https://images.unsplash.com/photo-1526401485004-2fda9f4dc5f1?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Smooth rotational rhythm; finish high and long.",
+  },
+  longjump: {
+    name: "Long Jump",
+    unit: "m",
+    lead: { name: "Jeswin Aldrin", current: 8.42, image: "https://images.unsplash.com/photo-1502810190503-8303352d0dd1?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Drive the last two steps and hit the board tall.",
+  },
+  highjump: {
+    name: "High Jump",
+    unit: "m",
+    lead: { name: "Tejaswin Shankar", current: 2.29, image: "https://images.unsplash.com/photo-1502810190503-8303352d0dd1?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Controlled curve and late, powerful takeoff.",
+  },
   sprint400: {
     name: "400m Sprint",
     unit: "s",
@@ -25,6 +49,36 @@ const sports = {
     unit: "kg",
     lead: { name: "Mirabai Chanu", current: 209, image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" },
     tip: "Keep bar path close and explode through extension.",
+  },
+  badminton: {
+    name: "Badminton (Match Points)",
+    unit: "pts",
+    lead: { name: "Lakshya Sen", current: 22, image: "https://images.unsplash.com/photo-1521417531039-6949f3f9f2b5?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Exploit opponent’s backhand and control the net.",
+  },
+  wrestling: {
+    name: "Wrestling (Bout Points)",
+    unit: "pts",
+    lead: { name: "Bajrang Punia", current: 10, image: "https://images.unsplash.com/photo-1571907480495-53b6d4d6c4b0?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Level changes and hand fighting set up your shots.",
+  },
+  boxing: {
+    name: "Boxing (Bout Points)",
+    unit: "pts",
+    lead: { name: "Nikhat Zareen", current: 5, image: "https://images.unsplash.com/photo-1521417531039-6949f3f9f2b5?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Keep a tight guard; work the jab and angles.",
+  },
+  hockey: {
+    name: "Hockey (Saves)",
+    unit: "sv",
+    lead: { name: "PR Sreejesh", current: 20, image: "https://images.unsplash.com/photo-1508766206392-8bd5cf550d1b?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Set early; explosive lateral pushes for corners.",
+  },
+  tabletennis: {
+    name: "Table Tennis (Game Points)",
+    unit: "pts",
+    lead: { name: "Manika Batra", current: 11, image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop" },
+    tip: "Vary spin on serve; attack third ball aggressively.",
   },
 } as const;
 
