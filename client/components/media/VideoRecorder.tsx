@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export type VideoRecorderProps = {
-  onComplete?: (blob: Blob, url: string, durationSec: number) => void;
+  onComplete?: (blob: Blob, url: string, durationSec: number, thumbnail?: Blob) => void;
   className?: string;
 };
 
@@ -46,12 +46,29 @@ export default function VideoRecorder({ onComplete, className }: VideoRecorderPr
     mr.ondataavailable = (e) => {
       if (e.data.size > 0) chunksRef.current.push(e.data);
     };
-    mr.onstop = () => {
+    mr.onstop = async () => {
       const blob = new Blob(chunksRef.current, { type: "video/webm" });
       const url = URL.createObjectURL(blob);
       setVideoURL(url);
       const durationSec = startTimeRef.current ? (Date.now() - startTimeRef.current) / 1000 : 0;
-      onComplete?.(blob, url, durationSec);
+      // create thumbnail
+      let thumb: Blob | undefined = undefined;
+      try {
+        const v = document.createElement("video");
+        v.src = url;
+        await v.play().catch(() => {});
+        await new Promise((r) => v.addEventListener("loadeddata", r, { once: true }));
+        const canvas = document.createElement("canvas");
+        canvas.width = v.videoWidth || 640;
+        canvas.height = v.videoHeight || 360;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+          thumb = await new Promise<Blob | undefined>((resolve) => canvas.toBlob((b) => resolve(b || undefined), "image/jpeg", 0.8));
+        }
+        v.pause();
+      } catch {}
+      onComplete?.(blob, url, durationSec, thumb);
       startTimeRef.current = null;
     };
     mr.start();
