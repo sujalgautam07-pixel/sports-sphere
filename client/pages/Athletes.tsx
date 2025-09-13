@@ -114,11 +114,27 @@ export default function Athletes() {
                     fd.append("sport", sport);
                     fd.append("distance", String(current));
                     fd.append("duration", String(durationSec || 0));
-                    // Attach a small blob if available
                     if (videoUrl) {
                       const resp = await fetch(videoUrl);
                       const blob = await resp.blob();
                       fd.append("video", blob, "attempt.webm");
+                      // also send a thumbnail frame for vision models
+                      try {
+                        const v = document.createElement("video");
+                        v.src = videoUrl;
+                        await v.play().catch(() => {});
+                        await new Promise((r) => v.addEventListener("loadeddata", r, { once: true }));
+                        const canvas = document.createElement("canvas");
+                        canvas.width = v.videoWidth || 640;
+                        canvas.height = v.videoHeight || 360;
+                        const ctx = canvas.getContext("2d");
+                        if (ctx) {
+                          ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+                          const imgBlob: Blob | null = await new Promise((resolve) => canvas.toBlob((b) => resolve(b), "image/jpeg", 0.8));
+                          if (imgBlob) fd.append("frame", imgBlob, "frame.jpg");
+                        }
+                        v.pause();
+                      } catch {}
                     }
                     const res = await fetch("/api/analyze", { method: "POST", body: fd });
                     const json = await res.json();
