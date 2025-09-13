@@ -1,14 +1,20 @@
 import type { RequestHandler } from "express";
 import multer from "multer";
+import { handleAnalyzeWithOpenAI } from "./analyze-openai";
 
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 50 * 1024 * 1024 } });
 
-export const analyzeUpload = upload.single("video");
+export const analyzeUpload = upload.fields([
+  { name: "video", maxCount: 1 },
+  { name: "frame", maxCount: 1 },
+]);
 
-export const handleAnalyze: RequestHandler = (req, res) => {
+export const handleAnalyze: RequestHandler = async (req, res) => {
   const sport = (req.body.sport as string) || "unknown";
   const distance = Number(req.body.distance ?? 0); // meters, kg, seconds depending on sport
   const duration = Number(req.body.duration ?? 0); // seconds (client measured)
+  const frameFile = (req.files as any)?.frame?.[0];
+  if (frameFile) (req as any).frameBuffer = frameFile.buffer as Buffer;
 
   // Lead athletes (simplified; ideally from DB)
   const leads: Record<string, { name: string; metric: number; unit: string }> = {
