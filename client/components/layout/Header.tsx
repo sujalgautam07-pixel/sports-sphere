@@ -1,6 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Flame, Trophy, Dumbbell, CalendarDays, Apple, Medal } from "lucide-react";
+import {
+  Flame,
+  Trophy,
+  Dumbbell,
+  CalendarDays,
+  Apple,
+  Medal,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -22,8 +29,12 @@ export function Header() {
                 <Flame className="h-5 w-5" />
               </span>
               <div className="leading-tight">
-                <div className="text-sm text-muted-foreground">Sports Authority of India</div>
-                <div className="text-lg font-extrabold tracking-tight text-gradient">SportSphere</div>
+                <div className="text-sm text-muted-foreground">
+                  Sports Authority of India
+                </div>
+                <div className="text-lg font-extrabold tracking-tight text-gradient">
+                  SportSphere
+                </div>
               </div>
             </Link>
 

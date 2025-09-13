@@ -7,7 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 import { setVerified } from "@/lib/auth";
 
 const emailSchema = z.object({ email: z.string().email() });
@@ -69,8 +73,13 @@ export default function SignUp() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="mx-auto max-w-xl">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-sm">
-            <h1 className="text-3xl font-extrabold tracking-tight"><span className="text-gradient">Join SportSphere</span></h1>
-            <p className="mt-2 text-sm text-muted-foreground">Register with email or mobile number to continue. We will send a 6‑digit OTP for verification.</p>
+            <h1 className="text-3xl font-extrabold tracking-tight">
+              <span className="text-gradient">Join SportSphere</span>
+            </h1>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Register with email or mobile number to continue. We will send a
+              6‑digit OTP for verification.
+            </p>
 
             {step === "form" && (
               <div className="mt-6">
@@ -83,18 +92,38 @@ export default function SignUp() {
                     <form onSubmit={onSubmit} className="space-y-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="email">Email address</Label>
-                        <Input id="email" type="email" placeholder="name@example.com" {...form.register("email")} />
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="name@example.com"
+                          {...form.register("email")}
+                        />
                       </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow">Send OTP</Button>
+                      <Button
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow"
+                      >
+                        Send OTP
+                      </Button>
                     </form>
                   </TabsContent>
                   <TabsContent value="phone" className="mt-4">
                     <form onSubmit={onSubmit} className="space-y-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="phone">Mobile number</Label>
-                        <Input id="phone" type="tel" placeholder="9876543210" {...form.register("phone")} />
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="9876543210"
+                          {...form.register("phone")}
+                        />
                       </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow">Send OTP</Button>
+                      <Button
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow"
+                      >
+                        Send OTP
+                      </Button>
                     </form>
                   </TabsContent>
                 </Tabs>
@@ -103,7 +132,10 @@ export default function SignUp() {
 
             {step === "otp" && (
               <div className="mt-6">
-                <div className="text-sm text-muted-foreground">We sent a 6‑digit code to <span className="font-medium text-foreground">{sentTo}</span></div>
+                <div className="text-sm text-muted-foreground">
+                  We sent a 6‑digit code to{" "}
+                  <span className="font-medium text-foreground">{sentTo}</span>
+                </div>
                 <div className="mt-4">
                   <InputOTP maxLength={6} value={otp} onChange={setOtp}>
                     <InputOTPGroup>
@@ -117,13 +149,25 @@ export default function SignUp() {
                   </InputOTP>
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <Button variant="outline" onClick={() => setStep("form")}>Edit</Button>
+                  <Button variant="outline" onClick={() => setStep("form")}>
+                    Edit
+                  </Button>
                   <div className="flex gap-2">
-                    <Button variant="ghost" onClick={() => sendOtp(sentTo)}>Resend OTP</Button>
-                    <Button onClick={verify} className="bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow">Verify & Continue</Button>
+                    <Button variant="ghost" onClick={() => sendOtp(sentTo)}>
+                      Resend OTP
+                    </Button>
+                    <Button
+                      onClick={verify}
+                      className="bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow"
+                    >
+                      Verify & Continue
+                    </Button>
                   </div>
                 </div>
-                <div className="mt-3 text-xs text-muted-foreground">Demo mode: OTP is <span className="font-mono">{serverOtp}</span></div>
+                <div className="mt-3 text-xs text-muted-foreground">
+                  Demo mode: OTP is{" "}
+                  <span className="font-mono">{serverOtp}</span>
+                </div>
               </div>
             )}
           </div>

@@ -36,7 +36,10 @@ export const handleAnalyzeWithOpenAI: RequestHandler = async (req, res) => {
 
     if (frameBuffer) {
       const base64 = `data:image/jpeg;base64,${frameBuffer.toString("base64")}`;
-      (messages[1].content as any[]).push({ type: "input_image", image_url: base64 });
+      (messages[1].content as any[]).push({
+        type: "input_image",
+        image_url: base64,
+      });
     }
 
     const completion = await (client as any).chat.completions.create({

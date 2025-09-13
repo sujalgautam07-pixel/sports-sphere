@@ -2,11 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export type VideoRecorderProps = {
-  onComplete?: (blob: Blob, url: string, durationSec: number, thumbnail?: Blob) => void;
+  onComplete?: (
+    blob: Blob,
+    url: string,
+    durationSec: number,
+    thumbnail?: Blob,
+  ) => void;
   className?: string;
 };
 
-export default function VideoRecorder({ onComplete, className }: VideoRecorderProps) {
+export default function VideoRecorder({
+  onComplete,
+  className,
+}: VideoRecorderProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
@@ -26,7 +34,10 @@ export default function VideoRecorder({ onComplete, className }: VideoRecorderPr
   const startCamera = async () => {
     setError("");
     try {
-      const s = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      const s = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false,
+      });
       setStream(s);
       if (videoRef.current) {
         videoRef.current.srcObject = s;
@@ -50,21 +61,27 @@ export default function VideoRecorder({ onComplete, className }: VideoRecorderPr
       const blob = new Blob(chunksRef.current, { type: "video/webm" });
       const url = URL.createObjectURL(blob);
       setVideoURL(url);
-      const durationSec = startTimeRef.current ? (Date.now() - startTimeRef.current) / 1000 : 0;
+      const durationSec = startTimeRef.current
+        ? (Date.now() - startTimeRef.current) / 1000
+        : 0;
       // create thumbnail
       let thumb: Blob | undefined = undefined;
       try {
         const v = document.createElement("video");
         v.src = url;
         await v.play().catch(() => {});
-        await new Promise((r) => v.addEventListener("loadeddata", r, { once: true }));
+        await new Promise((r) =>
+          v.addEventListener("loadeddata", r, { once: true }),
+        );
         const canvas = document.createElement("canvas");
         canvas.width = v.videoWidth || 640;
         canvas.height = v.videoHeight || 360;
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
-          thumb = await new Promise<Blob | undefined>((resolve) => canvas.toBlob((b) => resolve(b || undefined), "image/jpeg", 0.8));
+          thumb = await new Promise<Blob | undefined>((resolve) =>
+            canvas.toBlob((b) => resolve(b || undefined), "image/jpeg", 0.8),
+          );
         }
         v.pause();
       } catch {}
@@ -84,7 +101,12 @@ export default function VideoRecorder({ onComplete, className }: VideoRecorderPr
   return (
     <div className={className}>
       <div className="overflow-hidden rounded-xl border border-white/10 bg-black/40">
-        <video ref={videoRef} className="h-56 w-full object-cover" muted playsInline />
+        <video
+          ref={videoRef}
+          className="h-56 w-full object-cover"
+          muted
+          playsInline
+        />
         {videoURL && !recording && (
           <video src={videoURL} controls className="h-56 w-full object-cover" />
         )}
@@ -92,11 +114,17 @@ export default function VideoRecorder({ onComplete, className }: VideoRecorderPr
       {error && <div className="mt-2 text-sm text-amber-500">{error}</div>}
       <div className="mt-3 flex gap-2">
         {!recording ? (
-          <Button type="button" onClick={startRecording} className="bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow">
+          <Button
+            type="button"
+            onClick={startRecording}
+            className="bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow"
+          >
             Record
           </Button>
         ) : (
-          <Button type="button" variant="destructive" onClick={stopRecording}>Stop</Button>
+          <Button type="button" variant="destructive" onClick={stopRecording}>
+            Stop
+          </Button>
         )}
       </div>
     </div>
