@@ -77,7 +77,7 @@ export default function Index() {
                 fast, and beautifully simple. Crafted for athletes, coaches, and admins.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild className="bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow hover:brightness-110">
+                <Button asChild variant="brand">
                   <Link to="#explore">Explore the Platform</Link>
                 </Button>
                 <Button asChild variant="outline" className="border-white/20 bg-white/5 hover:bg-white/10">
@@ -110,7 +110,7 @@ export default function Index() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-sm"
+                    className="group relative overflow-hidden card soft-shadow"
                   >
                     <div
                       className={"absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-20 " + f.accent}
@@ -167,7 +167,7 @@ export default function Index() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: i * 0.05 }}
-                  className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-0.5 shadow-glow"
+                  className="relative h-full overflow-hidden card p-0.5"
                 >
                   <div className="relative rounded-[14px] bg-background/60 p-5 transition-transform duration-300 group-hover:-translate-y-1">
                     <div className="flex items-center justify-between">
