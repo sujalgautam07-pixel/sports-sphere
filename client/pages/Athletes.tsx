@@ -247,6 +247,7 @@ export default function Athletes() {
             <div className="mt-4">
               <Button
                 type="button"
+                variant="brand"
                 disabled={analyzing}
                 onClick={async () => {
                   try {
