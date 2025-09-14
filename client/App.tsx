@@ -40,10 +40,7 @@ const App = () => (
                 path="/events"
                 element={<Placeholder title="Event Schedules" />}
               />
-              <Route
-                path="/nutrition"
-                element={<Placeholder title="Nutrition Plans" />}
-              />
+              <Route path="/nutrition" element={<Nutrition />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
             </Route>
 
