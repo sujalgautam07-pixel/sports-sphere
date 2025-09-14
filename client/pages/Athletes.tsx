@@ -385,7 +385,7 @@ export default function Athletes() {
         </div>
 
         {analysis && (
-          <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+          <div className="mt-8 card p-6">
             <h2 className="text-lg font-semibold">Analysis</h2>
             <div className="mt-2 text-sm text-foreground/80">
               {analysis.feedback}
