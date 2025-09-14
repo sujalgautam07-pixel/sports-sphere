@@ -21,7 +21,7 @@ export const handleAnalyze: RequestHandler = async (req, res) => {
 
   // If OpenAI is configured and we have a frame, ask for technique feedback
   if (process.env.OPENAI_API_KEY && (req as any).frameBuffer) {
-    const openaiResult = await handleAnalyzeWithOpenAI(req, res);
+    const openaiResult = await (handleAnalyzeWithOpenAI as any)(req, res, () => {});
     if (res.headersSent) return; // error already sent
     if (openaiResult) {
       // continue and merge with heuristic comparison below
