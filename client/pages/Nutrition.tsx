@@ -59,7 +59,10 @@ const diets: Diet[] = [
       { meal: "Breakfast", items: ["Poha + sprouts", "Egg whites"] },
       { meal: "Lunch", items: ["Grilled fish/chicken", "Dalia"] },
       { meal: "Snack", items: ["Whey shake", "Fruit"] },
-      { meal: "Dinner", items: ["Tofu/paneer (low‑fat)", "Millet roti", "Sabzi"] },
+      {
+        meal: "Dinner",
+        items: ["Tofu/paneer (low‑fat)", "Millet roti", "Sabzi"],
+      },
     ],
   },
   {
@@ -80,7 +83,15 @@ const diets: Diet[] = [
   },
 ];
 
-function MacroBar({ label, value, color }: { label: string; value: number; color: string }) {
+function MacroBar({
+  label,
+  value,
+  color,
+}: {
+  label: string;
+  value: number;
+  color: string;
+}) {
   return (
     <div>
       <div className="flex items-center justify-between text-xs text-muted-foreground">
@@ -88,7 +99,10 @@ function MacroBar({ label, value, color }: { label: string; value: number; color
         <span>{value}%</span>
       </div>
       <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-white/10">
-        <div className={`h-2 rounded-full ${color}`} style={{ width: `${value}%` }} />
+        <div
+          className={`h-2 rounded-full ${color}`}
+          style={{ width: `${value}%` }}
+        />
       </div>
     </div>
   );
@@ -106,7 +120,10 @@ export default function Nutrition() {
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
               <span className="text-gradient">Nutrition Plans</span>
             </h1>
-            <p className="mt-2 text-sm text-muted-foreground">Curated athlete diets with macros, sample meals, and coaching tips.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Curated athlete diets with macros, sample meals, and coaching
+              tips.
+            </p>
           </div>
           <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
             <Flame className="h-4 w-4 text-brand-electric" />
@@ -122,11 +139,18 @@ export default function Nutrition() {
               className={`text-left card p-4 transition ${active === d.id ? "ring-2 ring-brand-electric" : "hover:-translate-y-0.5"}`}
             >
               <div className="overflow-hidden rounded-xl">
-                <img src={d.image} alt={d.name} className="h-28 w-full object-cover" loading="lazy" />
+                <img
+                  src={d.image}
+                  alt={d.name}
+                  className="h-28 w-full object-cover"
+                  loading="lazy"
+                />
               </div>
               <div className="mt-3 flex items-center justify-between">
                 <div>
-                  <div className="text-sm text-muted-foreground">{d.tagline}</div>
+                  <div className="text-sm text-muted-foreground">
+                    {d.tagline}
+                  </div>
                   <div className="text-lg font-semibold">{d.name}</div>
                 </div>
                 {d.id === "high-protein" ? (
@@ -138,9 +162,21 @@ export default function Nutrition() {
                 )}
               </div>
               <div className="mt-3 grid gap-2">
-                <MacroBar label="Protein" value={d.macros.protein} color="bg-brand-neon" />
-                <MacroBar label="Carbs" value={d.macros.carbs} color="bg-brand-electric" />
-                <MacroBar label="Fat" value={d.macros.fat} color="bg-brand-orange" />
+                <MacroBar
+                  label="Protein"
+                  value={d.macros.protein}
+                  color="bg-brand-neon"
+                />
+                <MacroBar
+                  label="Carbs"
+                  value={d.macros.carbs}
+                  color="bg-brand-electric"
+                />
+                <MacroBar
+                  label="Fat"
+                  value={d.macros.fat}
+                  color="bg-brand-orange"
+                />
               </div>
               <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
                 <span>Target • {d.calories}</span>
@@ -161,7 +197,10 @@ export default function Nutrition() {
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {selected.sample.map((s) => (
-              <div key={s.meal} className="rounded-xl border border-white/10 bg-background/60 p-4">
+              <div
+                key={s.meal}
+                className="rounded-xl border border-white/10 bg-background/60 p-4"
+              >
                 <div className="text-xs text-muted-foreground">{s.meal}</div>
                 <ul className="mt-1 list-disc pl-5 text-sm text-foreground/90">
                   {s.items.map((it) => (
@@ -173,7 +212,8 @@ export default function Nutrition() {
           </div>
 
           <div className="mt-6 text-sm text-foreground/80">
-            Tips: Hydrate well, prioritise whole foods, and time carbs around training. Adjust portions based on body‑weight and session load.
+            Tips: Hydrate well, prioritise whole foods, and time carbs around
+            training. Adjust portions based on body‑weight and session load.
           </div>
         </div>
       </div>

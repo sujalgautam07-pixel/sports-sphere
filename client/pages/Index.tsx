@@ -10,8 +10,7 @@ const features = [
     icon: Trophy,
     desc: "Live metrics, PB tracking, and performance analytics.",
     progress: 82,
-    img:
-      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F661819139bb14d5b9db21751315043ff",
+    img: "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F661819139bb14d5b9db21751315043ff",
     heroImg:
       "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F98e4032a9f854763b9c77fbdc41eb9ff",
     accent: "from-brand-electric to-brand-purple",
@@ -22,8 +21,7 @@ const features = [
     icon: Dumbbell,
     desc: "Personalized plans with periodization & loads.",
     progress: 64,
-    img:
-      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Fa0936c03fd7f4c72a39e15abf572566b",
+    img: "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Fa0936c03fd7f4c72a39e15abf572566b",
     heroImg:
       "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Fa10876665e584a54b0179bdadfbf4b19",
     accent: "from-brand-neon to-brand-electric",
@@ -34,8 +32,7 @@ const features = [
     icon: CalendarDays,
     desc: "National camps, trials, and competition timelines.",
     progress: 48,
-    img:
-      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Ff23b298a4bc84567a227afdeb9b687de",
+    img: "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Ff23b298a4bc84567a227afdeb9b687de",
     heroImg:
       "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2Ff23b298a4bc84567a227afdeb9b687de",
     accent: "from-brand-orange to-brand-neon",
@@ -46,8 +43,7 @@ const features = [
     icon: Apple,
     desc: "Goal-based meal plans and hydration insights.",
     progress: 73,
-    img:
-      "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F1d8425549bc746499a891ca88a440b03",
+    img: "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F1d8425549bc746499a891ca88a440b03",
     heroImg:
       "https://cdn.builder.io/api/v1/image/assets%2Fcd06ff019ea34918b7e998439cfaf4c5%2F1d8425549bc746499a891ca88a440b03",
     accent: "from-brand-purple to-brand-orange",
@@ -68,19 +64,26 @@ export default function Index() {
                 Built for the Sports Authority of India
               </div>
               <h1 className="mt-6 text-5xl/tight sm:text-6xl/tight font-extrabold tracking-tight">
-                <span className="text-gradient">World‑class Sports Management</span>
+                <span className="text-gradient">
+                  World‑class Sports Management
+                </span>
                 <br />
                 <span className="text-foreground">for Indian Excellence</span>
               </h1>
               <p className="mt-5 max-w-xl text-lg text-foreground/80">
-                A modern platform that feels like Apple x Nike x Olympics — bold,
-                fast, and beautifully simple. Crafted for athletes, coaches, and admins.
+                A modern platform that feels like Apple x Nike x Olympics —
+                bold, fast, and beautifully simple. Crafted for athletes,
+                coaches, and admins.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild variant="brand">
                   <Link to="#explore">Explore the Platform</Link>
                 </Button>
-                <Button asChild variant="outline" className="border-white/20 bg-white/5 hover:bg-white/10">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-white/20 bg-white/5 hover:bg-white/10"
+                >
                   <a href="#features">See Features</a>
                 </Button>
               </div>
@@ -113,7 +116,10 @@ export default function Index() {
                     className="group relative overflow-hidden card soft-shadow"
                   >
                     <div
-                      className={"absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-20 " + f.accent}
+                      className={
+                        "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-20 " +
+                        f.accent
+                      }
                     />
                     <img
                       src={f.heroImg ?? f.img}
@@ -124,7 +130,9 @@ export default function Index() {
                     <div className="p-4">
                       <div className="flex items-center gap-2">
                         <f.icon className="h-4 w-4 text-brand-electric" />
-                        <p className="text-xs text-muted-foreground">Highlighted</p>
+                        <p className="text-xs text-muted-foreground">
+                          Highlighted
+                        </p>
                       </div>
                       <h3 className="mt-1 font-semibold">{f.title}</h3>
                       <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
@@ -175,9 +183,17 @@ export default function Index() {
                         <f.icon className="h-4 w-4 text-brand-electric" />
                         <span>{f.title}</span>
                       </div>
-                      <div className={"h-1.5 w-16 rounded-full bg-gradient-to-r " + f.accent + " animate-gradient-x bg-200%"} />
+                      <div
+                        className={
+                          "h-1.5 w-16 rounded-full bg-gradient-to-r " +
+                          f.accent +
+                          " animate-gradient-x bg-200%"
+                        }
+                      />
                     </div>
-                    <p className="mt-3 text-sm text-muted-foreground">{f.desc}</p>
+                    <p className="mt-3 text-sm text-muted-foreground">
+                      {f.desc}
+                    </p>
 
                     <div className="mt-4 overflow-hidden rounded-xl">
                       <img
@@ -190,7 +206,9 @@ export default function Index() {
 
                     <div className="mt-4 flex items-center justify-between text-sm">
                       <span className="text-foreground/80">View details</span>
-                      <span className="text-brand-neon group-hover:translate-x-1 transition-transform">→</span>
+                      <span className="text-brand-neon group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
                     </div>
                   </div>
                 </motion.div>
