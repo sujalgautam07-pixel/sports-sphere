@@ -215,7 +215,7 @@ export default function Athletes() {
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+          <div className="card p-6 card-hover">
             <h2 className="text-lg font-semibold">Record or Upload</h2>
             <p className="mb-4 text-sm text-muted-foreground">
               Capture your attempt or upload a video (analysis is demo-only).
@@ -305,7 +305,7 @@ export default function Athletes() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+          <div className="card p-6 card-hover">
             <h2 className="text-lg font-semibold">Your Result</h2>
             <p className="mb-4 text-sm text-muted-foreground">
               Enter your last and current {cfg.unit === "s" ? "time" : "mark"}{" "}
