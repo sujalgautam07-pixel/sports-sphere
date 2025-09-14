@@ -15,6 +15,7 @@ import RequireAuth from "@/components/auth/RequireAuth";
 import SignUp from "@/pages/SignUp";
 import Gate from "@/components/auth/Gate";
 import Athletes from "@/pages/Athletes";
+import Nutrition from "@/pages/Nutrition";
 
 const queryClient = new QueryClient();
 
