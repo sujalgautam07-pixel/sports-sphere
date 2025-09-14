@@ -415,7 +415,7 @@ export default function Athletes() {
           </div>
         )}
 
-        <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+        <div className="mt-8 card p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
               <img
