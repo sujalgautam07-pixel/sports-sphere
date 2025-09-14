@@ -61,7 +61,8 @@ export function Header() {
             <div className="flex items-center gap-2">
               <Button
                 asChild
-                className="hidden md:inline-flex bg-gradient-to-r from-brand-electric via-brand-purple to-brand-neon text-white shadow-glow hover:brightness-110"
+                variant="brand"
+                className="hidden md:inline-flex"
               >
                 <Link to="/signup">Get Started</Link>
               </Button>
